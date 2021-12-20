@@ -88,3 +88,42 @@ func TestCompare(t *testing.T) {
 		}
 	}
 }
+
+func TestSum(t *testing.T) {
+	tests := []struct {
+		nums     []int
+		expected int
+	}{
+		{[]int{1, 2, 3, 4, 5}, 15},
+		{[]int{1, 1, 1, 1, 1}, 5},
+		{[]int{0, 0, 0, 0, 0}, 0},
+		{[]int{}, 0},
+	}
+
+	for _, test := range tests {
+		got := m.Sum(test.nums...)
+		if got != test.expected {
+			t.Errorf("Expected %v, got %v\n", test.expected, got)
+		}
+	}
+}
+
+func TestSumEven(t *testing.T) {
+	tests := []struct {
+		nums     []int
+		expected int
+	}{
+		{[]int{1, 2, 3, 4, 5}, 6},
+		{[]int{1, 1, 1, 1, 1}, 0},
+		{[]int{0, 0, 0, 0, 0}, 0},
+		{[]int{}, 0},
+		{[]int{2, 4, 6, 8}, 20},
+	}
+
+	for _, test := range tests {
+		got := m.SumEven(test.nums...)
+		if got != test.expected {
+			t.Errorf("Expected %v, got %v\n", test.expected, got)
+		}
+	}
+}
